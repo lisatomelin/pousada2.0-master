@@ -1,0 +1,45 @@
+<section class="mt-5">
+  <div class="container">
+    <div class="card">
+      <div class="row align-items-md-start gy-5 p-5">
+        <div
+          class="col-12 col-md-7 d-flex flex-column justify-content-between"
+          style="padding-left: 20px; padding-top: 20px"
+        >
+          <div>
+            <h1 class="card-title fw-bold text-primary">
+              Controle de Reservas
+            </h1>
+            <div class="fs-5">
+              <p class="mt-4">
+                O
+                <span class="text-warning fw-bold">Controle de Reservas</span>
+                busca agilizar o gerenciamento da rotina diária ao facilitar o
+                acesso e controle de agendamento de reservas de hospedes.
+              </p>
+              <p class="text-primary fw-bold">O que você deseja gerenciar?</p>
+            </div>
+          </div>
+          <div class="button-container">
+            <button mat-raised-button color="primary">Hóspedes</button>
+            <a class="btn btn-primary" routerLink="/hospedes/listar"> </a>
+
+            <button mat-raised-button color="primary">Reservas</button>
+            <a class="btn btn-primary" routerLink="/reservas/listar"> </a>
+
+            <button mat-raised-button color="primary">Quartos</button>
+            <a class="btn btn-primary" routerLink="/quartos/listar"> </a>
+          </div>
+        </div>
+        <div class="col-12 col-md-5 order-md-1 mb-4 mb-md-0">
+          <img
+            src="/assets/recepcao.png"
+            class="img-fluid rounded"
+            alt="recepcao"
+            style="height: 50%; width: 40%; position:left;"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

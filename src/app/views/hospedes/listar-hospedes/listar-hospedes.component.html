@@ -1,0 +1,58 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-md-8 d-grid gap-3">
+    <h1 class="fs-2 row justify-content-center">
+      Lista de Hospedes Cadastrados
+    </h1>
+
+    <button
+      routerLink="/hospedes/inserir"
+      mat-raised-button
+      class="me-auto py-4 px-4 fs-8"
+      color="primary"
+    >
+      <mat-icon>add</mat-icon>
+      Novo Hóspede
+    </button>
+
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>E-MAIL</th>
+            <th>TELEFONE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hospede of hospedes$ | async">
+            <td>{{ hospede.name }}</td>
+            <td>{{ hospede.cpf }}</td>
+            <td>{{ hospede.email }}</td>
+            <td>{{ hospede.phone_number }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="flex justify-content-center gap-3 align-content-center align-items-center"
+    >
+      <button
+        pButton
+        pRipple
+        icon="pi pi-pencil"
+        class="p-button-rounded p-button-warning"
+        pTooltip="Editar hospede"
+        tooltipPosition="top"
+      ></button>
+      <button
+        pButton
+        pRipple
+        icon="pi pi-trash"
+        class="p-button-rounded p-button-danger"
+        pTooltip="Remover hospede"
+        tooltipPosition="top"
+      ></button>
+    </div>
+  </div>
+</div>
