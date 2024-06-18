@@ -8,12 +8,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InserirQuartosComponent } from './inserir-quartos/inserir-quartos.component';
-
-
-
+import { ListarQuartosComponent } from './listar-quartos/listar-quartos.component';
 
 @NgModule({
-  declarations: [InserirQuartosComponent],
+  declarations: [InserirQuartosComponent, ListarQuartosComponent],
   imports: [
     CommonModule,
     QuartosRoutingModule,
@@ -22,7 +20,7 @@ import { InserirQuartosComponent } from './inserir-quartos/inserir-quartos.compo
     MatInputModule,
     MatIconModule,
     MatCardModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
 })
-export class QuartosModule { }
+export class QuartosModule {}

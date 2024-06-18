@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InserirQuartosComponent } from './inserir-quartos/inserir-quartos.component';
+import { ListarQuartosComponent } from './listar-quartos/listar-quartos.component';
 
 const routes: Routes = [
   {
@@ -9,9 +10,13 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: '',
+    component: ListarQuartosComponent,
+  },
+  {
     path: 'inserir',
     component: InserirQuartosComponent,
-    //resolve: { hospede: listarQuartosResolver}
+    //resolve: { quartos: listarQuartosResolver}
   },
 ];
 

@@ -11,9 +11,9 @@ import { Observable } from 'rxjs';
 export class ListarHospedesComponent implements OnInit {
   hospedes$?: Observable<ListarHospedesViewModel[]>;
 
-  constructor(private HospedesService: HospedesService) {}
+  constructor(private hospedesService: HospedesService) {}
 
   ngOnInit(): void {
-    this.hospedes$ = this.HospedesService.selecionarTodos();
+    this.hospedes$ = this.hospedesService.selecionarTodos();
   }
 }

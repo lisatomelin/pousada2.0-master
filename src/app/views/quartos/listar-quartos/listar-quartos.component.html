@@ -1,1 +1,58 @@
-<p>listar-quartos works!</p>
+<div class="row justify-content-center mt-5">
+  <div class="col-md-8 d-grid gap-3">
+    <h1 class="fs-2 row justify-content-center">
+      Lista de Quartos Cadastrados
+    </h1>
+
+    <button
+      routerLink="/hospedes/inserir"
+      mat-raised-button
+      class="me-auto py-4 px-4 fs-8"
+      color="primary"
+    >
+      <mat-icon>add</mat-icon>
+      Novo Quarto
+    </button>
+
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>NÚMERO</th>
+            <th>ANDAR</th>
+            <th>DESCRIÇÃO</th>
+            <th>CAPACIDADE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let quarto of quartos$ | async">
+            <td>{{ quarto.number }}</td>
+            <td>{{ quarto.floor }}</td>
+            <td>{{ quarto.description }}</td>
+            <td>{{ quarto.capacity }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="flex justify-content-center gap-3 align-content-center align-items-center"
+    >
+      <button
+        pButton
+        pRipple
+        icon="pi pi-pencil"
+        class="p-button-rounded p-button-warning"
+        pTooltip="Editar quarto"
+        tooltipPosition="top"
+      ></button>
+      <button
+        pButton
+        pRipple
+        icon="pi pi-trash"
+        class="p-button-rounded p-button-danger"
+        pTooltip="Remover quarto"
+        tooltipPosition="top"
+      ></button>
+    </div>
+  </div>
+</div>
