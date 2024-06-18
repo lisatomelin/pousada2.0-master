@@ -6,7 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { FormsHospedesViewModel } from '../models/forms-hospedes.View-Model';
+import { FormsHospedesViewModel } from '../models/forms-hospedes..View.Model';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/core/notification/services/notification.service';
 

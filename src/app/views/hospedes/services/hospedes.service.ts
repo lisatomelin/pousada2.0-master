@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { ListarHospedesViewModel } from '../models/listar-hospedes.View-Model';
+import { ListarHospedesViewModel } from '../models/listar-hospedes.View.Model';
 import { environment } from 'src/environments/environment';
-import { FormsHospedesViewModel } from '../models/forms-hospedes.View-Model';
-import { VisualizarHospedesViewModel } from '../models/visualizar-HospedesViewModel';
+import { FormsHospedesViewModel } from '../models/forms-hospedes..View.Model';
+import { VisualizarHospedesViewModel } from '../models/visualizar-hospedes.View.Model';
 
 @Injectable({
   providedIn: 'root'

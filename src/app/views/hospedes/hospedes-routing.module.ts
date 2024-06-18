@@ -4,7 +4,7 @@ import { NgModule, inject } from '@angular/core';
 import { InserirHospedesComponent } from './inserir-hospedes/inserir-hospedes.component';
 import { ListarHospedesComponent } from './listar-hospedes/listar-hospedes.component';
 import { HospedesService } from './services/hospedes.service';
-import { VisualizarHospedesViewModel } from './models/visualizar-HospedesViewModel';
+import { VisualizarHospedesViewModel } from './models/visualizar-hospedes.View.Model';
 
 const listarHospedesResolver = () => {
   return inject(HospedesService).selecionarTodos();

@@ -1,6 +1,6 @@
 import { HospedesService } from './../services/hospedes.service';
 import { Component, OnInit } from '@angular/core';
-import { ListarHospedesViewModel } from '../models/listar-hospedes.View-Model';
+import { ListarHospedesViewModel } from '../models/listar-hospedes.View.Model';
 import { Observable } from 'rxjs';
 
 @Component({
