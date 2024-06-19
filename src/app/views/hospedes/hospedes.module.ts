@@ -11,18 +11,22 @@ import { ListarHospedesComponent } from './listar-hospedes/listar-hospedes.compo
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { HospedesService } from './services/hospedes.service';
+import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [InserirHospedesComponent, ListarHospedesComponent],
   imports: [
     CommonModule,
     SharedModule,
+    HttpClientModule,
     ReactiveFormsModule,
     HospedesRoutingModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
     MatCardModule,
+    MatButtonModule
   ],
 
   providers: [HospedesService],

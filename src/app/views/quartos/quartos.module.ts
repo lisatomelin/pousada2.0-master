@@ -9,12 +9,15 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InserirQuartosComponent } from './inserir-quartos/inserir-quartos.component';
 import { ListarQuartosComponent } from './listar-quartos/listar-quartos.component';
+import { HttpClientModule } from '@angular/common/http';
+import { QuartosService } from './services/quartos.service';
 
 @NgModule({
   declarations: [InserirQuartosComponent, ListarQuartosComponent],
   imports: [
     CommonModule,
     QuartosRoutingModule,
+    HttpClientModule,
     SharedModule,
     MatFormFieldModule,
     MatInputModule,
@@ -22,5 +25,7 @@ import { ListarQuartosComponent } from './listar-quartos/listar-quartos.componen
     MatCardModule,
     ReactiveFormsModule,
   ],
+
+  providers: [QuartosService]
 })
 export class QuartosModule {}

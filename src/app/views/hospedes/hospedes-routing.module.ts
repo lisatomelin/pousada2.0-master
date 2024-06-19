@@ -4,7 +4,8 @@ import { NgModule, inject } from '@angular/core';
 import { InserirHospedesComponent } from './inserir-hospedes/inserir-hospedes.component';
 import { ListarHospedesComponent } from './listar-hospedes/listar-hospedes.component';
 import { HospedesService } from './services/hospedes.service';
-import { VisualizarHospedesViewModel } from './models/visualizar-hospedes.View.Model';
+import { GuestViewModel } from './models/guest-View.Model';
+
 
 const listarHospedesResolver = () => {
   return inject(HospedesService).selecionarTodos();
@@ -16,7 +17,7 @@ const formsHospedesResolver = (route: ActivatedRouteSnapshot) => {
   return inject(HospedesService).selecionarPorId(id);
 };
 
-const visualizarHospedesResolver: ResolveFn<VisualizarHospedesViewModel> = (
+const visualizarHospedesResolver: ResolveFn<GuestViewModel> = (
   route: ActivatedRouteSnapshot
 ) => {
   return inject(HospedesService).selecionarPorId(

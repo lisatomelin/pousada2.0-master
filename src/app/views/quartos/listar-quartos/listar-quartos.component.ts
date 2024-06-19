@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListarQuartosViewModel } from '../models/listar-quartos.View.Model';
+
 import { QuartosService } from '../services/quartos.service';
+import { RoomsViewModel } from '../models/rooms-View.Model';
 
 @Component({
   selector: 'app-listar-quartos',
@@ -9,7 +10,7 @@ import { QuartosService } from '../services/quartos.service';
   styleUrls: ['./listar-quartos.component.scss'],
 })
 export class ListarQuartosComponent implements OnInit {
-  quartos$?: Observable<ListarQuartosViewModel[]>;
+  quartos$?: Observable<RoomsViewModel[]>;
 
   constructor(private quartosService: QuartosService) {}
 

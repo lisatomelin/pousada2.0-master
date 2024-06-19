@@ -1,4 +1,4 @@
-export type VisualizarQuartosViewModel = {
+export type RoomsViewModel = {
   id: string;
   number: string;
   floor: string;

@@ -3,7 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { QuartosService } from '../services/quartos.service';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/core/notification/services/notification.service';
-import { FormsQuartosViewModel } from '../models/forms-quartos.View.Model';
+import { RoomsViewModel } from '../models/rooms-View.Model';
+
 
 @Component({
   selector: 'app-inserir-quartos',
@@ -38,7 +39,7 @@ export class InserirQuartosComponent implements OnInit{
     });
   }
 
-  processarSucesso(res: FormsQuartosViewModel) {
+  processarSucesso(res: RoomsViewModel) {
     this.router.navigate(['/quartos', 'listar']);
   }
 

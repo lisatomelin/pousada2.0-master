@@ -6,9 +6,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { FormsHospedesViewModel } from '../models/forms-hospedes..View.Model';
+
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/core/notification/services/notification.service';
+import { GuestViewModel } from '../models/guest-View.Model';
 
 @Component({
   selector: 'app-inserir-hospedes',
@@ -25,7 +26,7 @@ export class InserirHospedesComponent implements OnInit {
     this.form = this.fb.group({
       name: new FormControl('', [Validators.required]),
       cpf: new FormControl('', [Validators.required]),
-      phone_number: new FormControl('', [Validators.required]),
+      phone_Number: new FormControl('', [Validators.required]),
     });
   }
 
@@ -40,8 +41,8 @@ export class InserirHospedesComponent implements OnInit {
     });
   }
 
-  processarSucesso(res: FormsHospedesViewModel) {
-    this.router.navigate(['/hospedes', 'listar']);
+  processarSucesso(res: GuestViewModel) {
+    this.router.navigate(['/guests', 'listar']);
   }
 
   processarFalha(err: any) {

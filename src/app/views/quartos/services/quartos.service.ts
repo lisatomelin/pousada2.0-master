@@ -2,31 +2,30 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { FormsQuartosViewModel } from '../models/forms-quartos.View.Model';
-import { ListarQuartosViewModel } from '../models/listar-quartos.View.Model';
-import { VisualizarQuartosViewModel } from '../models/visualizar-quartos.View.Model';
+import { RoomsViewModel } from '../models/rooms-View.Model';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuartosService {
 
-  private API_URL = `${environment.API_URL}/Quartos`;
+  private API_URL = `${environment.API_URL}/rooms`;
 
   constructor(private http: HttpClient) {}
 
-  criar(quarto: FormsQuartosViewModel): Observable<FormsQuartosViewModel> {
-    return this.http.post<FormsQuartosViewModel>(this.API_URL, quarto);
+  criar(rooms: RoomsViewModel): Observable<RoomsViewModel> {
+    return this.http.post<RoomsViewModel>(this.API_URL, rooms);
   }
 
-  selecionarPorId(id: string): Observable<VisualizarQuartosViewModel> {
-    const url = `${this.API_URL}/visualizacao-completa/${id}`;
+  selecionarPorId(id: string): Observable<RoomsViewModel> {
+    const url = `${this.API_URL}/${id}`;
 
     return this.http.get<any>(url)
     .pipe(map(res => res.dados));
   }
 
-  selecionarTodos(): Observable<ListarQuartosViewModel[]> {
+  selecionarTodos(): Observable<RoomsViewModel[]> {
     return this.http.get<any>(this.API_URL)
     .pipe(map(res => res.dados));
   }

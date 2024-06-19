@@ -1,7 +1,7 @@
-export type ListarHospedesViewModel = {
+export type GuestViewModel = {
   id: string;
   name: string;
   email: string;
   cpf: number;
-  phone_number: string;
+  phoneNumber: string;
 };

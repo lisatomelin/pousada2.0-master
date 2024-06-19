@@ -1,15 +1,16 @@
 import { HospedesService } from './../services/hospedes.service';
 import { Component, OnInit } from '@angular/core';
-import { ListarHospedesViewModel } from '../models/listar-hospedes.View.Model';
+
 import { Observable } from 'rxjs';
+import { GuestViewModel } from '../models/guest-View.Model';
 
 @Component({
   selector: 'app-listar-hospedes',
   templateUrl: './listar-hospedes.component.html',
-  styleUrls: [],
+  styleUrls: ['./listar-hospedes.component.scss'],
 })
 export class ListarHospedesComponent implements OnInit {
-  hospedes$?: Observable<ListarHospedesViewModel[]>;
+  hospedes$?: Observable<GuestViewModel[]>;
 
   constructor(private hospedesService: HospedesService) {}
 
