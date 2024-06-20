@@ -13,9 +13,13 @@ import { MatCardModule } from '@angular/material/card';
 import { HospedesService } from './services/hospedes.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
+import { EditarHospedesComponent } from './editar-hospedes/editar-hospedes.component';
+import { ExcluirHospedesComponent } from './excluir-hospedes/excluir-hospedes.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
-  declarations: [InserirHospedesComponent, ListarHospedesComponent],
+  declarations: [InserirHospedesComponent, ListarHospedesComponent, EditarHospedesComponent, ExcluirHospedesComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -26,7 +30,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatIconModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDividerModule,
+    MatListModule
   ],
 
   providers: [HospedesService],

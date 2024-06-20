@@ -1,0 +1,71 @@
+<div class="row justify-content-center align-items-center mt-5">
+  <div class="col-md-5">
+    <h1 class="fs-2">Excluir Hóspede</h1>
+
+    <p class="fs-5">
+      Você tem certeza que deseja excluir o seguinte hóspede?
+    </p>
+
+    <mat-list *ngIf="hospedesVM | async as hospede">
+      <mat-list-item>
+        <div class="d-flex justify-content-between mt-3">
+          <span>Id:</span>
+          <span>{{hospede.id}}</span>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        <div class="d-flex justify-content-between mt-3">
+          <span>Nome:</span>
+          <span>{{hospede.name}}</span>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+    <mat-list-item>
+      <div class="d-flex justify-content-between mt-3">
+        <span>Email:</span>
+        <span>{{hospede.email}}</span>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+
+  <mat-list-item>
+      <div class="d-flex justify-content-between mt-3">
+        <span>CPF:</span>
+        <span>{{hospede.cpf}}</span>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+
+    <mat-list-item>
+      <div class="d-flex justify-content-between mt-3">
+        <span>Telefone:</span>
+        <span>{{hospede.phoneNumber}}</span>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+
+
+    <div class="d-flex justify-content-end gap-2 mt-3">
+      <button
+        class="py-3 px-5"
+        color="warn"
+        mat-raised-button
+        (click)="gravar()"
+        >
+
+        Excluir
+      </button>
+      <button
+        routerLink="/hospedes/listar"
+        class="py-3 px-5"
+        color="primary"
+        mat-stroked-button
+      >
+        Voltar
+      </button>
+    </div>
+
+

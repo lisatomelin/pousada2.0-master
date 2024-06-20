@@ -12,9 +12,11 @@ import { ListarQuartosComponent } from './listar-quartos/listar-quartos.componen
 import { HttpClientModule } from '@angular/common/http';
 import { QuartosService } from './services/quartos.service';
 import { MatButtonModule } from '@angular/material/button';
+import { EditarQuartosComponent } from './editar-quartos/editar-quartos.component';
+import { ExcluirQuartosComponent } from './excluir-quartos/excluir-quartos.component';
 
 @NgModule({
-  declarations: [InserirQuartosComponent, ListarQuartosComponent],
+  declarations: [InserirQuartosComponent, ListarQuartosComponent, EditarQuartosComponent, ExcluirQuartosComponent],
   imports: [
     CommonModule,
     QuartosRoutingModule,

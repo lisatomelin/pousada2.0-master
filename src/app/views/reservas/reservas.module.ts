@@ -14,12 +14,15 @@ import { ReservasService } from './services/reservas.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatOptionModule } from '@angular/material/core';
-
+import { EditarReservasComponent } from './editar-reservas/editar-reservas.component';
+import { ExcluirReservasComponent } from './excluir-reservas/excluir-reservas.component';
 
 @NgModule({
   declarations: [
     InserirReservasComponent,
-    ListarReservasComponent
+    ListarReservasComponent,
+    EditarReservasComponent,
+    ExcluirReservasComponent,
   ],
   imports: [
     CommonModule,
@@ -35,6 +38,6 @@ import { MatOptionModule } from '@angular/material/core';
     MatOptionModule,
   ],
 
-  providers: [ReservasService]
+  providers: [ReservasService],
 })
-export class ReservasModule { }
+export class ReservasModule {}
