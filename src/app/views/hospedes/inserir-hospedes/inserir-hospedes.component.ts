@@ -26,12 +26,13 @@ export class InserirHospedesComponent implements OnInit {
     this.form = this.fb.group({
       name: new FormControl('', [Validators.required]),
       cpf: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
       phone_Number: new FormControl('', [Validators.required]),
     });
   }
 
-  campoEstaInvalido(nome: string) {
-    return this.form?.get(nome)!.touched && this.form?.get(nome)!.invalid;
+  campoEstaInvalido(name: string) {
+    return this.form?.get(name)!.touched && this.form?.get(name)!.invalid;
   }
 
   gravar(): void {
