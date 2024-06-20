@@ -14,6 +14,8 @@ import { QuartosService } from './services/quartos.service';
 import { MatButtonModule } from '@angular/material/button';
 import { EditarQuartosComponent } from './editar-quartos/editar-quartos.component';
 import { ExcluirQuartosComponent } from './excluir-quartos/excluir-quartos.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [InserirQuartosComponent, ListarQuartosComponent, EditarQuartosComponent, ExcluirQuartosComponent],
@@ -28,6 +30,8 @@ import { ExcluirQuartosComponent } from './excluir-quartos/excluir-quartos.compo
     MatCardModule,
     MatButtonModule,
     ReactiveFormsModule,
+    MatDividerModule,
+    MatListModule
   ],
 
   providers: [QuartosService]
