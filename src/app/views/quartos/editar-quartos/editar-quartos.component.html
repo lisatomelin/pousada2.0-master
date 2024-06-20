@@ -1,1 +1,50 @@
-<p>editar-quartos works!</p>
+<div class="row justify-content-center align-items-center mt-5">
+  <div class="col-md-5">
+    <h1 class="fs-2">Editar Quarto</h1>
+
+    <form [formGroup]="form!" (ngSubmit)="gravar()" class="d-grid mt-4">
+      <mat-form-field appearance="outline">
+        <mat-label>NÚMERO:</mat-label>
+        <input type="text" formControlName="number" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>ANDAR:</mat-label>
+        <input type="text" formControlName="floor" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>DESCRIÇÃO:</mat-label>
+        <input type="text" formControlName="description" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>CAPACIDADE:</mat-label>
+        <input type="text" formControlName="capacity" matInput />
+      </mat-form-field>
+
+
+      <div class="d-flex justify-content-end gap-2 mt-5">
+        <button
+          type="submit"
+          class="py-3 px-5"
+          color="primary"
+          mat-raised-button
+        >
+          Salvar
+        </button>
+        <button
+          routerLink="/quartos/listar"
+          class="py-3 px-5"
+          color="warn"
+          mat-stroked-button
+        >
+          Voltar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
