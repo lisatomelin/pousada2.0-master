@@ -17,6 +17,7 @@ import { EditarHospedesComponent } from './editar-hospedes/editar-hospedes.compo
 import { ExcluirHospedesComponent } from './excluir-hospedes/excluir-hospedes.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { NotificationModule } from 'src/app/core/notification/notification.module';
 
 @NgModule({
   declarations: [InserirHospedesComponent, ListarHospedesComponent, EditarHospedesComponent, ExcluirHospedesComponent],
@@ -32,7 +33,8 @@ import { MatListModule } from '@angular/material/list';
     MatCardModule,
     MatButtonModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    NotificationModule
   ],
 
   providers: [HospedesService],

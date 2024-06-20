@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { GuestViewModel } from '../models/guest-View.Model';
@@ -14,7 +14,11 @@ export class HospedesService {
   constructor(private http: HttpClient) {}
 
   criar(hospede: GuestViewModel): Observable<GuestViewModel> {
-    return this.http.post<GuestViewModel>(this.API_URL, hospede);
+    const hospedes: GuestViewModel[] = this.getHospedes();
+    hospedes.push(hospede)
+    localStorage.setItem('hospedes', JSON.stringify(hospedes));
+    return of(hospede);
+    // return this.http.post<GuestViewModel>(this.API_URL, hospede);
   }
 
   editar(id: string, hospede: GuestViewModel): Observable<GuestViewModel> {
@@ -36,6 +40,12 @@ export class HospedesService {
   }
 
   selecionarTodos(): Observable<GuestViewModel[]> {
-    return this.http.get<any>(this.API_URL).pipe(map((res) => res.dados));
+    return of(this.getHospedes());
+    // return this.http.get<any>(this.API_URL).pipe(map((res) => res.dados));
   }
+
+  private getHospedes(): GuestViewModel[] {
+    return JSON.parse(localStorage.getItem('hospedes') || '[]');
+  }
+
 }

@@ -27,7 +27,7 @@ export class InserirHospedesComponent implements OnInit {
       name: new FormControl('', [Validators.required]),
       cpf: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
-      phone_Number: new FormControl('', [Validators.required]),
+      phoneNumber: new FormControl('', [Validators.required]),
     });
   }
 
