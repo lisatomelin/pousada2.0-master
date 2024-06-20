@@ -11,6 +11,7 @@ import { InserirQuartosComponent } from './inserir-quartos/inserir-quartos.compo
 import { ListarQuartosComponent } from './listar-quartos/listar-quartos.component';
 import { HttpClientModule } from '@angular/common/http';
 import { QuartosService } from './services/quartos.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [InserirQuartosComponent, ListarQuartosComponent],
@@ -23,6 +24,7 @@ import { QuartosService } from './services/quartos.service';
     MatInputModule,
     MatIconModule,
     MatCardModule,
+    MatButtonModule,
     ReactiveFormsModule,
   ],
 

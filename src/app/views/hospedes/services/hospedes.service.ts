@@ -14,9 +14,22 @@ export class HospedesService {
 
   constructor(private http: HttpClient) {}
 
-  criar(guest: GuestViewModel): Observable<GuestViewModel> {
-    return this.http.post<GuestViewModel>(this.API_URL, guest);
+  criar(hospede: GuestViewModel): Observable<GuestViewModel> {
+    return this.http.post<GuestViewModel>(this.API_URL, hospede);
   }
+
+  editar(id: string, hospede: GuestViewModel): Observable<GuestViewModel> {
+    const url = `${this.API_URL}/${id}`;
+
+    return this.http.put<GuestViewModel>(url, hospede);
+  }
+
+  excluir(id: string): Observable<any> {
+    const url = `${this.API_URL}/${id}`;
+
+    return this.http.delete<GuestViewModel>(url);
+  }
+
 
   selecionarPorId(id: string): Observable<GuestViewModel> {
     const url = `${this.API_URL}/${id}`;

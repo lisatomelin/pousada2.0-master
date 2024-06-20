@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: 'inserir',
     component: InserirQuartosComponent,
-    //resolve: { quartos: listarQuartosResolver}
+   
   },
 ];
 
