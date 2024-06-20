@@ -17,6 +17,18 @@ export class ReservasService {
     return this.http.post<ReservationViewModel>(this.API_URL, reserva);
   }
 
+  editar(id: string, reserva: ReservationViewModel): Observable<ReservationViewModel> {
+    const url = `${this.API_URL}/${id}`;
+
+    return this.http.put<ReservationViewModel>(url, reserva);
+  }
+
+  excluir(id: string): Observable<any> {
+    const url = `${this.API_URL}/${id}`;
+
+    return this.http.delete<ReservationViewModel>(url);
+  }
+
   selecionarPorId(id: string): Observable<ReservationViewModel> {
     const url = `${this.API_URL}/${id}`;
 

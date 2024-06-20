@@ -1,1 +1,68 @@
-<p>excluir-reservas works!</p>
+<div class="row justify-content-center align-items-center mt-5">
+  <div class="col-md-5">
+    <h1 class="fs-2">Excluir Reserva</h1>
+
+    <p class="fs-5">
+      Você tem certeza que deseja excluir a seguinte reserva?
+    </p>
+
+    <mat-list *ngIf="reservasVM | async as reserva">
+      <mat-list-item>
+        <div class="d-flex justify-content-between mt-3">
+          <span>Id:</span>
+          <span>{{reserva.id}}</span>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        <div class="d-flex justify-content-between mt-3">
+          <span>DATA ENTRADA:</span>
+          <span>{{reserva.CheckIn}}</span>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+    <mat-list-item>
+      <div class="d-flex justify-content-between mt-3">
+        <span>DATA SAÍDA:</span>
+        <span>{{reserva.CheckOut}}</span>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+
+  <mat-list-item>
+      <div class="d-flex justify-content-between mt-3">
+        <span>NÚMERO DE CRIANÇAS:</span>
+        <span>{{reserva.NumberOfChildren}}</span>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+
+    <mat-list-item>
+      <div class="d-flex justify-content-between mt-3">
+        <span>NÚMERO DE ADULTOS:</span>
+        <span>{{reserva.NumberOfAdults}}</span>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+
+    <div class="d-flex justify-content-end gap-2 mt-3">
+      <button
+        class="py-3 px-5"
+        color="warn"
+        mat-raised-button
+        (click)="gravar()"
+        >
+
+        Excluir
+      </button>
+      <button
+        routerLink="/reservas/listar"
+        class="py-3 px-5"
+        color="primary"
+        mat-stroked-button
+      >
+        Voltar
+      </button>
+    </div>

@@ -16,6 +16,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MatOptionModule } from '@angular/material/core';
 import { EditarReservasComponent } from './editar-reservas/editar-reservas.component';
 import { ExcluirReservasComponent } from './excluir-reservas/excluir-reservas.component';
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,9 @@ import { ExcluirReservasComponent } from './excluir-reservas/excluir-reservas.co
     MatCardModule,
     MatButtonModule,
     MatOptionModule,
+    MatDividerModule,
+    MatListModule
+
   ],
 
   providers: [ReservasService],
