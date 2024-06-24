@@ -23,49 +23,43 @@
       </mat-list-item>
       <mat-divider></mat-divider>
 
-    <mat-list-item>
-      <div class="d-flex justify-content-between mt-3">
-        <span>Email:</span>
-        <span>{{hospede.email}}</span>
+      <mat-list-item>
+        <div class="d-flex justify-content-between mt-3">
+          <span>Email:</span>
+          <span>{{hospede.email}}</span>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        <div class="d-flex justify-content-between mt-3">
+          <span>CPF:</span>
+          <span>{{hospede.cpf}}</span>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        <div class="d-flex justify-content-between mt-3">
+          <span>Telefone:</span>
+          <span>{{hospede.phoneNumber}}</span>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+
+
+      <div class="d-flex justify-content-end gap-2 mt-3">
+        <button class="py-3 px-5"
+                color="warn"
+                mat-raised-button
+                (click)="gravar()">
+
+          Excluir
+        </button>
+        <button routerLink="/hospedes/listar"
+                class="py-3 px-5"
+                color="primary"
+                mat-stroked-button>
+          Voltar
+        </button>
       </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-
-  <mat-list-item>
-      <div class="d-flex justify-content-between mt-3">
-        <span>CPF:</span>
-        <span>{{hospede.cpf}}</span>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-
-    <mat-list-item>
-      <div class="d-flex justify-content-between mt-3">
-        <span>Telefone:</span>
-        <span>{{hospede.phoneNumber}}</span>
-      </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-
-
-    <div class="d-flex justify-content-end gap-2 mt-3">
-      <button
-        class="py-3 px-5"
-        color="warn"
-        mat-raised-button
-        (click)="gravar()"
-        >
-
-        Excluir
-      </button>
-      <button
-        routerLink="/hospedes/listar"
-        class="py-3 px-5"
-        color="primary"
-        mat-stroked-button
-      >
-        Voltar
-      </button>
-    </div>
-
-

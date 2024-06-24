@@ -43,7 +43,7 @@ export class InserirHospedesComponent implements OnInit {
   }
 
   processarSucesso(res: GuestViewModel) {
-    this.router.navigate(['/guests', 'listar']);
+    this.router.navigate(['/hospedes', 'listar']);
   }
 
   processarFalha(err: any) {

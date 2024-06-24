@@ -4,12 +4,10 @@
       Lista de Hospedes Cadastrados
     </h1>
 
-    <button
-      routerLink="/hospedes/inserir"
-      mat-raised-button
-      class="me-auto py-4 px-4 fs-8"
-      color="primary"
-    >
+    <button routerLink="/hospedes/inserir"
+            mat-raised-button
+            class="me-auto py-4 px-4 fs-8"
+            color="primary">
       <mat-icon>add</mat-icon>
       Novo Hóspede
     </button>
@@ -31,24 +29,27 @@
             <td>{{ hospede.cpf }}</td>
             <td>{{ hospede.email }}</td>
             <td>{{ hospede.phoneNumber }}</td>
-            <td><div class="d-flex align-items-center justify-content-center">
-              <button mat-stroked-button class="m-2" routerLink="/hospedes/editar/{{hospede.id}}" color="accent">
-                Editar
-              </button>
-              <button mat-stroked-button class="m-2" routerLink="/hospedes/excluir/{{hospede.id}}"  color="warn">
-                Excluir
-              </button>
-            </div></td>
+            <td>
+              <div class="d-flex align-items-center justify-content-center">
+                <button mat-stroked-button
+                        class="m-2"
+                        routerLink="/hospedes/editar/{{hospede.id}}"
+                        color="accent">
+                  Editar
+                </button>
+                <button mat-stroked-button
+                        class="m-2"
+                        routerLink="/hospedes/excluir/{{hospede.id}}"
+                        color="warn">
+                  Excluir
+                </button>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div
-      class="flex justify-content-center gap-3 align-content-center align-items-center"
-    >
-
-
-
+    <div class="flex justify-content-center gap-3 align-content-center align-items-center">
     </div>
   </div>
 </div>

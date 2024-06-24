@@ -11,7 +11,7 @@ import { NotificationService } from 'src/app/core/notification/services/notifica
   styleUrls: ['./excluir-hospedes.component.scss']
 })
 export class ExcluirHospedesComponent implements OnInit {
-  hospedesVM?: Observable<GuestViewModel>;
+  hospedesVM?: Observable<GuestViewModel | undefined>;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,12 +22,12 @@ export class ExcluirHospedesComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.hospedesVM = this.route.data.pipe(map((res) => res ['hospede']))
+    const id = this.route.snapshot.paramMap.get('id')!;
+    this.hospedesVM = this.hospedesService.selecionarPorId(id)
   }
 
   gravar(){
     const id = this.route.snapshot.paramMap.get('id')!;
-
     this.hospedesService.excluir(id).subscribe({
       next: () => this.processarSucesso(),
       error: (err) => this.processarFalha(err),
@@ -35,11 +35,12 @@ export class ExcluirHospedesComponent implements OnInit {
   }
 
   processarSucesso() {
+    console.log('deu certo')
     this.notification.sucesso(
       "O Hospede foi excluído com sucesso!"
     )
 
-    this.router.navigate(['/hospdes/listar']);
+    this.router.navigate(['/hospedes', 'listar']);
   }
 
   processarFalha(err: any){

@@ -26,7 +26,7 @@ const routes: Routes = [
     component: EditarHospedesComponent,
   },
   {
-    path: 'excluir/id',
+    path: 'excluir/:id',
     component: ExcluirHospedesComponent,
   },
 ];

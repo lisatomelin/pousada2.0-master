@@ -23,7 +23,7 @@ export class EditarHospedesComponent implements OnInit {
       name: new FormControl('', [Validators.required]),
       cpf: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
-      phone_Number: new FormControl('', [Validators.required]),
+      phoneNumber: new FormControl('', [Validators.required]),
     });
   }
 
@@ -39,8 +39,8 @@ export class EditarHospedesComponent implements OnInit {
     });
   }
 
-  processarSucesso(res: GuestViewModel) {
-    this.router.navigate(['/guests', 'listar']);
+  processarSucesso(res: GuestViewModel | undefined): void {
+    this.router.navigate(['/hospedes', 'listar']);
   }
 
   processarFalha(err: any) {
