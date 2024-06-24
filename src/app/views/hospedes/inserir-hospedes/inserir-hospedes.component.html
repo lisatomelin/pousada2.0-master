@@ -1,5 +1,5 @@
-<div class="row justify-content-center align-items-center mt-5">
-  <div class="col-md-5">
+<div class="row justify-content-center align-items-center mt-5" style="padding-left: 20px; padding-top: 20px">
+  <div class="col-md-5" style="padding-top: 20px;">
     <h1 class="fs-2">Inserir Novo Hóspede</h1>
 
     <form [formGroup]="form!" (ngSubmit)="gravar()" class="d-grid mt-4">
@@ -8,17 +8,17 @@
         <input type="text" formControlName="name" matInput />
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" style="padding-left: 10px;">
         <mat-label>CPF:</mat-label>
         <input type="text" formControlName="cpf" matInput />
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" style="padding-left: 10px;">
         <mat-label>EMAIL:</mat-label>
         <input type="text" formControlName="email" matInput />
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" style="padding-left: 10px;">
         <mat-label>TELEFONE:</mat-label>
         <input type="text" formControlName="phoneNumber" matInput />
       </mat-form-field>
@@ -35,7 +35,7 @@
         </button>
         <button
           routerLink="/hospedes/listar"
-          class="py-3 px-5"
+          class="py-3 px-5 btn-spacing"
           color="warn"
           mat-stroked-button
         >

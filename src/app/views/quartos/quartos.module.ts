@@ -16,6 +16,7 @@ import { EditarQuartosComponent } from './editar-quartos/editar-quartos.componen
 import { ExcluirQuartosComponent } from './excluir-quartos/excluir-quartos.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { NotificationModule } from 'src/app/core/notification/notification.module';
 
 @NgModule({
   declarations: [InserirQuartosComponent, ListarQuartosComponent, EditarQuartosComponent, ExcluirQuartosComponent],
@@ -31,7 +32,8 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     ReactiveFormsModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    NotificationModule
   ],
 
   providers: [QuartosService]

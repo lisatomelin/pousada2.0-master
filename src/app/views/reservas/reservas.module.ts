@@ -6,7 +6,7 @@ import { InserirReservasComponent } from './inserir-reservas/inserir-reservas.co
 import { ListarReservasComponent } from './listar-reservas/listar-reservas.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,6 +18,8 @@ import { EditarReservasComponent } from './editar-reservas/editar-reservas.compo
 import { ExcluirReservasComponent } from './excluir-reservas/excluir-reservas.component';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
+import { NotificationModule } from 'src/app/core/notification/notification.module';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,10 @@ import { MatDividerModule } from '@angular/material/divider';
     MatButtonModule,
     MatOptionModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatSelectModule,
+    NotificationModule,
+   
 
   ],
 

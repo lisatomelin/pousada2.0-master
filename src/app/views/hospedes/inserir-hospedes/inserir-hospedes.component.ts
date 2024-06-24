@@ -14,7 +14,7 @@ import { GuestViewModel } from '../models/guest-View.Model';
 @Component({
   selector: 'app-inserir-hospedes',
   templateUrl: './inserir-hospedes.component.html',
-  styleUrls: [],
+  styleUrls: ['./inserir-hospedes.component.scss'],
 })
 export class InserirHospedesComponent implements OnInit {
   form!: FormGroup;

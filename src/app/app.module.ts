@@ -17,13 +17,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { DashboardModule } from './views/dashboard/dashboard.module';
 import { MatButtonModule } from '@angular/material/button';
 
-import { MatFormFieldModule } from '@angular/material/form-field';
+
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent ],
 
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ import { ToastrModule } from 'ngx-toastr';
     DashboardModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatInputModule,
     SharedModule,
 
     CoreModule,
