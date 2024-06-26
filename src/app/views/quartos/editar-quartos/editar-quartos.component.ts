@@ -30,7 +30,7 @@ export class EditarQuartosComponent implements OnInit {
     this.form = this.fb.group({
       number: new FormControl('', [Validators.required]),
       floor: new FormControl('', [Validators.required]),
-      decription: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
       capacity: new FormControl('', [Validators.required]),
     });
 
@@ -48,7 +48,7 @@ export class EditarQuartosComponent implements OnInit {
       error: (err) => this.processarFalha(err),
     });
   }
-  processarSucesso(res: RoomsViewModel) {
+  processarSucesso(res: RoomsViewModel | undefined) {
     this.router.navigate(['/quartos', 'listar']);
   }
 

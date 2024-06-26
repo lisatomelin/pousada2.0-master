@@ -24,7 +24,7 @@ const routes: Routes = [
     component: EditarQuartosComponent,
   },
   {
-    path: 'excluir/id',
+    path: 'excluir/:id',
     component: ExcluirQuartosComponent,
   },
 ];

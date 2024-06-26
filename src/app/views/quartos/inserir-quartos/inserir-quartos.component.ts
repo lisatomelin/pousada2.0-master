@@ -23,7 +23,7 @@ export class InserirQuartosComponent implements OnInit{
     this.form = this.fb.group({
       number: new FormControl('', [Validators.required]),
       floor: new FormControl('', [Validators.required]),
-      decription: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required]),
       capacity: new FormControl('', [Validators.required]),
     });
   }

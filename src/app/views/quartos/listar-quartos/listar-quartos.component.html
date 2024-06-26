@@ -1,15 +1,14 @@
-<div class="row justify-content-center mt-5" style="padding-left: 20px; padding-top: 20px">
+<div class="row justify-content-center mt-5"
+     style="padding-left: 20px; padding-top: 20px">
   <div class="col-md-8 d-grid gap-3">
     <h1 class="fs-2 row justify-content-center">
       Lista de Quartos Cadastrados
     </h1>
 
-    <button
-      routerLink="/quartos/inserir"
-      mat-raised-button
-      class="me-auto py-4 px-4 fs-8"
-      color="primary"
-    >
+    <button routerLink="/quartos/inserir"
+            mat-raised-button
+            class="me-auto py-4 px-4 fs-8"
+            color="primary">
       <mat-icon>add</mat-icon>
       Novo Quarto
     </button>
@@ -22,6 +21,7 @@
             <th>ANDAR</th>
             <th>DESCRIÇÃO</th>
             <th>CAPACIDADE</th>
+            <th>AÇÕES</th>
           </tr>
         </thead>
         <tbody>
@@ -30,13 +30,27 @@
             <td>{{ quarto.floor }}</td>
             <td>{{ quarto.description }}</td>
             <td>{{ quarto.capacity }}</td>
+            <td>
+              <div class="d-flex align-items-center justify-content-center">
+                <button mat-stroked-button
+                        class="m-2"
+                        routerLink="/quartos/editar/{{quarto.id}}"
+                        color="accent">
+                  Editar
+                </button>
+                <button mat-stroked-button
+                        class="m-2"
+                        routerLink="/quartos/excluir/{{quarto.id}}"
+                        color="warn">
+                  Excluir
+                </button>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div
-      class="flex justify-content-center gap-3 align-content-center align-items-center"
-    >
+    <div class="flex justify-content-center gap-3 align-content-center align-items-center">
 
     </div>
   </div>

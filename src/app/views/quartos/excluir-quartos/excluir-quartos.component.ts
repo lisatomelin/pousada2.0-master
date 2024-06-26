@@ -11,7 +11,7 @@ import { NotificationService } from 'src/app/core/notification/services/notifica
   styleUrls: ['./excluir-quartos.component.scss']
 })
 export class ExcluirQuartosComponent implements OnInit {
-  quartosVM?: Observable<RoomsViewModel>;
+  quartosVM?: Observable<RoomsViewModel | undefined>;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,8 +21,8 @@ export class ExcluirQuartosComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.quartosVM = this.route.data.pipe(map((res) => res['quarto']));
-
+    const id = this.route.snapshot.paramMap.get('id')!;
+    this.quartosVM = this.quartosService.selecionarPorId(id);
   }
 
   gravar(): void {
