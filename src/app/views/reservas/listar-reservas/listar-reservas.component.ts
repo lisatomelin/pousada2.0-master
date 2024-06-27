@@ -45,7 +45,6 @@ export class ListarReservasComponent implements OnInit {
 
   protected formatarData(date: Date): string {
     let dataReal: string = date as unknown as string;
-    console.log(date);
     if (dataReal.includes('T')) {
       dataReal = dataReal.split('T')[0];
     }

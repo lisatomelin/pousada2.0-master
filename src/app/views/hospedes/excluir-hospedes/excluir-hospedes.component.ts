@@ -35,7 +35,6 @@ export class ExcluirHospedesComponent implements OnInit {
   }
 
   processarSucesso() {
-    console.log('deu certo')
     this.notification.sucesso(
       "O Hospede foi excluído com sucesso!"
     )

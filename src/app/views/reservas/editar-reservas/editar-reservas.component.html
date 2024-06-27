@@ -63,7 +63,7 @@
                       style="padding-left: 10px;">
         <mat-label>Quarto</mat-label>
         <mat-select formControlName="roomId">
-          <mat-option *ngFor="let quarto of quartos$ | async"
+          <mat-option *ngFor="let quarto of quartos"
                       [value]="quarto.id">
             {{ quarto.number }}
           </mat-option>
@@ -74,7 +74,7 @@
                       style="padding-left: 10px;">
         <mat-label>Hospede</mat-label>
         <mat-select formControlName="guestId">
-          <mat-option *ngFor="let hospede of hospedes$ | async"
+          <mat-option *ngFor="let hospede of hospedes"
                       [value]="hospede.id">
             {{ hospede.name }}
           </mat-option>

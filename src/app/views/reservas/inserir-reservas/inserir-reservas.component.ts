@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { NotificationService } from 'src/app/core/notification/services/notification.service';
 import { GuestViewModel } from '../../hospedes/models/guest-View.Model';
 import { HospedesService } from '../../hospedes/services/hospedes.service';
@@ -28,8 +28,8 @@ interface Form {
 })
 export class InserirReservasComponent implements OnInit {
   form!: FormGroup<Form>;
-  hospedes$?: Observable<GuestViewModel[]>;
-  quartos$?: Observable<RoomsViewModel[]>;
+  hospedes: GuestViewModel[] = [];
+  quartos: RoomsViewModel[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -51,11 +51,28 @@ export class InserirReservasComponent implements OnInit {
       roomId: new FormControl(null, [Validators.required])
     });
 
-    this.hospedes$ = this.hospedeService.selecionarTodos();
-    this.quartos$ = this.quartoService.selecionarTodos();
+    forkJoin([
+      this.hospedeService.selecionarTodos(),
+      this.quartoService.selecionarTodos()
+    ])
+    .subscribe({
+      next: ([hospedes, quartos]) => {
+        this.hospedes = hospedes;
+        this.quartos = quartos;
+      },
+      error: error => this.processarFalha(error)
+    })
+
   }
 
   gravar(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+    if (!this.validForm()) {
+      return;
+    }
     this.reservasService.criar(this.form?.value as ReservationViewModel).subscribe({
       next: (res) => this.processarSucesso(res),
       error: (err) => this.processarFalha(err)
@@ -68,6 +85,21 @@ export class InserirReservasComponent implements OnInit {
 
   processarFalha(err: any) {
     this.notification.erro(err.error.erros[0]);
+  }
+
+  private validForm(): boolean {
+    const formValue = this.form.getRawValue();
+    const quarto = this.quartos.find(item => item.id === formValue.roomId);
+    if (!quarto) {
+      this.notification.aviso('Quarto não encontrado!');
+      return false;
+    }
+    const capacity: number = (formValue.numberOfAdults || 0) + (formValue.numberOfChildren || 0);
+    if (quarto.capacity < capacity) {
+      this.notification.aviso('A capacidade máxima do quarto foi ultrapassada!');
+      return false;
+    }
+    return true;
   }
 
 }
