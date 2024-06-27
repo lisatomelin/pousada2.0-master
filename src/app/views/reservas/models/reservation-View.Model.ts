@@ -1,12 +1,9 @@
-
-
 export type ReservationViewModel = {
   id: string;
-  CheckIn: Date;
-  CheckOut: Date;
-  NumberOfAdults: number;
-  NumberOfChildren: number;
+  checkIn: Date;
+  checkOut: Date;
+  numberOfAdults: number;
+  numberOfChildren: number;
   roomId: string;
   guestId: string;
-
 }

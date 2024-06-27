@@ -11,7 +11,7 @@ import { NotificationService } from 'src/app/core/notification/services/notifica
   styleUrls: ['./excluir-reservas.component.scss'],
 })
 export class ExcluirReservasComponent implements OnInit {
-  reservasVM?: Observable<ReservationViewModel>;
+  reservasVM?: Observable<ReservationViewModel | undefined>;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,22 +21,34 @@ export class ExcluirReservasComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.reservasVM = this.route.data.pipe(map((res) => res['reserva']));
+    const id = this.route.snapshot.paramMap.get('id')!;
+    this.reservasVM = this.reservasService.selecionarPorId(id)
   }
 
   gravar() {
     const id = this.route.snapshot.paramMap.get('id')!;
-
     this.reservasService.excluir(id).subscribe({
       next: () => this.processarSucesso(),
       error: (err) => this.processarFalha(err),
     });
   }
 
+  protected formatarData(date: Date): string {
+    let dataReal: string = date as unknown as string;
+    console.log(date);
+    if (dataReal.includes('T')) {
+      dataReal = dataReal.split('T')[0];
+    }
+    if (dataReal.includes('-')){
+      const auxiliary: string[] = dataReal.split('-');
+      dataReal = auxiliary.reverse().join('/');
+    }
+    return dataReal;
+  }
+
   processarSucesso() {
     this.notification.sucesso('A Reserva foi excluída com sucesso!');
-
-    this.router.navigate(['/reservas/listar']);
+    this.router.navigate(['/reservas', 'listar']);
   }
 
   processarFalha(err: any) {

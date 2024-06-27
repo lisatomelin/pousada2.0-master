@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { uuidv4 } from 'src/app/core/utils/uuidv4';
 import { environment } from 'src/environments/environment';
 import { GuestViewModel } from '../models/guest-View.Model';
-import { uuidv4 } from 'src/app/core/utils/uuidv4';
 
 const GUESTS_KEY = 'guests';
 
@@ -24,19 +24,19 @@ export class HospedesService {
     // return this.http.post<GuestViewModel>(this.API_URL, hospede);
   }
 
-  editar(id: string, guest: GuestViewModel): Observable<GuestViewModel | undefined> {
+  editar(id: string, newGuest: GuestViewModel): Observable<GuestViewModel | undefined> {
     const guests: GuestViewModel[] = this.getGuests();
-    const oldGuest: GuestViewModel | undefined = guests.find(guest => guest.id === id);
-    if (!oldGuest) {
+    const registeredGuest: GuestViewModel | undefined = guests.find(guest => guest.id === id);
+    if (!registeredGuest) {
       console.error(`Hóspede ${id} não encontrado`);
       return of(undefined);
     }
-    oldGuest.name = guest.name;
-    oldGuest.email = guest.email;
-    oldGuest.cpf = guest.cpf;
-    oldGuest.phoneNumber = guest.phoneNumber;
+    registeredGuest.name = newGuest.name;
+    registeredGuest.email = newGuest.email;
+    registeredGuest.cpf = newGuest.cpf;
+    registeredGuest.phoneNumber = newGuest.phoneNumber;
     this.setGuests(guests);
-    return of(oldGuest);
+    return of(registeredGuest);
     // const url = `${this.API_URL}/${id}`;
     // return this.http.put<GuestViewModel>(url, hospede);
   }

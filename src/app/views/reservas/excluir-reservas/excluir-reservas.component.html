@@ -18,7 +18,7 @@
       <mat-list-item>
         <div class="d-flex justify-content-between mt-3">
           <span>DATA ENTRADA:</span>
-          <span>{{reserva.CheckIn}}</span>
+          <span>{{formatarData(reserva.checkIn)}}</span>
         </div>
       </mat-list-item>
       <mat-divider></mat-divider>
@@ -26,7 +26,7 @@
     <mat-list-item>
       <div class="d-flex justify-content-between mt-3">
         <span>DATA SAÍDA:</span>
-        <span>{{reserva.CheckOut}}</span>
+        <span>{{formatarData(reserva.checkOut)}}</span>
       </div>
     </mat-list-item>
     <mat-divider></mat-divider>
@@ -34,7 +34,7 @@
   <mat-list-item>
       <div class="d-flex justify-content-between mt-3">
         <span>NÚMERO DE CRIANÇAS:</span>
-        <span>{{reserva.NumberOfChildren}}</span>
+        <span>{{reserva.numberOfChildren}}</span>
       </div>
     </mat-list-item>
     <mat-divider></mat-divider>
@@ -42,7 +42,7 @@
     <mat-list-item>
       <div class="d-flex justify-content-between mt-3">
         <span>NÚMERO DE ADULTOS:</span>
-        <span>{{reserva.NumberOfAdults}}</span>
+        <span>{{reserva.numberOfAdults}}</span>
       </div>
     </mat-list-item>
     <mat-divider></mat-divider>

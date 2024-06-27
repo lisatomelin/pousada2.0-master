@@ -33,8 +33,12 @@ export class EditarQuartosComponent implements OnInit {
       description: new FormControl('', [Validators.required]),
       capacity: new FormControl('', [Validators.required]),
     });
-
-    this.form.patchValue(this.route.snapshot.data['quarto']);
+    const id = this.route.snapshot.paramMap.get('id')!;
+    this.quartosService.selecionarPorId(id)
+    .subscribe({
+      next: quarto => this.form.reset(quarto),
+      error: (error) => this.processarFalha(error)
+    });
   }
 
   campoEstaInvalido(number: string) {

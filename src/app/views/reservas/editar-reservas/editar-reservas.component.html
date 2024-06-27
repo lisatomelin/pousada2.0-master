@@ -1,80 +1,100 @@
-<div class="row justify-content-center align-items-center mt-5"style="padding-left: 20px; padding-top: 20px">
+<div class="row justify-content-center align-items-center mt-5"
+     style="padding-left: 20px; padding-top: 20px">
   <div class="col-md-5">
     <h1 class="fs-2">Editar Reserva</h1>
 
-    <form [formGroup]="form!" (ngSubmit)="gravar()" class="d-grid mt-4">
+    <form [formGroup]="form"
+          (ngSubmit)="gravar()"
+          class="d-grid mt-4">
+      <!-- <mat-form-field appearance="outline">
+        <mat-label>Data Entrada:</mat-label>
+        <input formControlName="checkIn"
+               type="date"
+               matInput
+               placeholder="dd/mm/aaaa" />
+      </mat-form-field> -->
       <mat-form-field appearance="outline">
-        <mat-label>Data Entrada</mat-label>
-        <input
-          formControlName="CheckIn"
-          type="date"
-          matInput
-          placeholder="dd/mm/aaaa"
-        />
+        <mat-label>Data Entrada:</mat-label>
+        <input matInput
+               [matDatepicker]="checkInPicker"
+               formControlName="checkIn">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix
+                               [for]="checkInPicker"></mat-datepicker-toggle>
+        <mat-datepicker #checkInPicker></mat-datepicker>
       </mat-form-field>
-      <mat-form-field appearance="outline" style="padding-left: 10px;">
+      <!-- <mat-form-field appearance="outline"
+                      style="padding-left: 10px;">
         <mat-label>Data Saída</mat-label>
-        <input
-          formControlName="CheckOut"
-          type="date"
-          matInput
-          placeholder="dd/mm/aaaa"
-        />
+        <input formControlName="checkOut"
+               type="date"
+               matInput
+               placeholder="dd/mm/aaaa" />
+      </mat-form-field> -->
+      <mat-form-field appearance="outline">
+        <mat-label>Data Saída:</mat-label>
+        <input matInput
+               [matDatepicker]="checkOutPicker"
+               formControlName="checkOut">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix
+                               [for]="checkOutPicker"></mat-datepicker-toggle>
+        <mat-datepicker #checkOutPicker></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" style="padding-left: 10px;">
+
+      <mat-form-field appearance="outline"
+                      style="padding-left: 10px;">
         <mat-label>Número de Crianças:</mat-label>
-        <input type="text" formControlName="NumberOfChildren" matInput />
+        <input type="number"
+               formControlName="numberOfChildren"
+               matInput />
       </mat-form-field>
 
-      <mat-form-field appearance="outline" style="padding-left: 10px;">
+      <mat-form-field appearance="outline"
+                      style="padding-left: 10px;">
         <mat-label>Número de Adultos:</mat-label>
-        <input type="text" formControlName="NumberOfAdults" matInput />
+        <input type="number"
+               formControlName="numberOfAdults"
+               matInput />
       </mat-form-field>
 
-      <mat-form-field appearance="outline" style="padding-left: 10px;">
+      <mat-form-field appearance="outline"
+                      style="padding-left: 10px;">
         <mat-label>Quarto</mat-label>
         <mat-select formControlName="roomId">
-          <mat-option
-            *ngFor="let quarto of quartos$ | async"
-            [value]="quarto.id"
-          >
+          <mat-option *ngFor="let quarto of quartos$ | async"
+                      [value]="quarto.id">
             {{ quarto.number }}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" style="padding-left: 10px;">
+      <mat-form-field appearance="outline"
+                      style="padding-left: 10px;">
         <mat-label>Hospede</mat-label>
         <mat-select formControlName="guestId">
-          <mat-option
-            *ngFor="let hospede of hospedes$ | async"
-            [value]="hospede.id"
-          >
+          <mat-option *ngFor="let hospede of hospedes$ | async"
+                      [value]="hospede.id">
             {{ hospede.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
       <div class="d-flex justify-content-end gap-2 mt-5">
-        <button
-          type="submit"
-          class="py-3 px-5"
-          color="primary"
-          mat-raised-button
-        >
+        <button type="submit"
+                class="py-3 px-5"
+                color="primary"
+                mat-raised-button>
           Salvar
         </button>
-        <button
-          routerLink="/reservas/listar"
-          class="py-3 px-5 btn-spacing"
-          color="warn"
-          mat-stroked-button
-        >
+        <button routerLink="/reservas/listar"
+                class="py-3 px-5 btn-spacing"
+                color="warn"
+                mat-stroked-button>
           Voltar
         </button>
       </div>
     </form>
   </div>
 </div>
-

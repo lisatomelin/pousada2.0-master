@@ -25,6 +25,12 @@ export class EditarHospedesComponent implements OnInit {
       email: new FormControl('', [Validators.required]),
       phoneNumber: new FormControl('', [Validators.required]),
     });
+    const id = this.route.snapshot.paramMap.get('id')!;
+    this.hospedesService.selecionarPorId(id)
+    .subscribe({
+      next: hospede => this.form.reset(hospede),
+      error: (error) => this.processarFalha(error)
+    });
   }
 
   campoEstaInvalido(name: string) {

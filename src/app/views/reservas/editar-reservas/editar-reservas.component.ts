@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import {
-  FormGroup,
   FormBuilder,
   FormControl,
+  FormGroup,
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { NotificationService } from 'src/app/core/notification/services/notification.service';
 import { GuestViewModel } from '../../hospedes/models/guest-View.Model';
+import { HospedesService } from '../../hospedes/services/hospedes.service';
 import { RoomsViewModel } from '../../quartos/models/rooms-View.Model';
+import { QuartosService } from '../../quartos/services/quartos.service';
 import { ReservationViewModel } from '../models/reservation-View.Model';
 import { ReservasService } from '../services/reservas.service';
 
@@ -28,21 +30,28 @@ export class EditarReservasComponent {
     private reservasService: ReservasService,
     private route: ActivatedRoute,
     private router: Router,
-    private notification: NotificationService
-  ) {}
+    private notification: NotificationService,
+    private hospedeService: HospedesService,
+    private quartoService: QuartosService,
+  ) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      CheckIn: new FormControl('', [Validators.required]),
-      CheckOut: new FormControl('', [Validators.required]),
-      NumberOfAdults: new FormControl('', [Validators.required]),
-      NumberOfChildren: new FormControl('', [Validators.required]),
-      GuestId: new FormControl('', [Validators.required]),
-      RoomId: new FormControl('', [Validators.required]),
+      checkIn: new FormControl('', [Validators.required]),
+      checkOut: new FormControl('', [Validators.required]),
+      numberOfAdults: new FormControl('', [Validators.required]),
+      numberOfChildren: new FormControl('', [Validators.required]),
+      guestId: new FormControl('', [Validators.required]),
+      roomId: new FormControl('', [Validators.required]),
     });
-
-    this.hospedes$ = this.route.data.pipe(map((dados) => dados['guests']));
-    this.quartos$ = this.route.data.pipe(map((dados) => dados['rooms']));
+    const id = this.route.snapshot.paramMap.get('id')!;
+    this.reservasService.selecionarPorId(id)
+      .subscribe({
+        next: reservation => this.form.reset(reservation),
+        error: (error) => this.processarFalha(error)
+      });
+    this.hospedes$ = this.hospedeService.selecionarTodos();
+    this.quartos$ = this.quartoService.selecionarTodos();
   }
 
   gravar(): void {
@@ -53,8 +62,8 @@ export class EditarReservasComponent {
     });
   }
 
-  processarSucesso(res: ReservationViewModel) {
-    this.router.navigate(['/reservation', 'listar']);
+  processarSucesso(res: ReservationViewModel | undefined) {
+    this.router.navigate(['/reservas', 'listar']);
   }
 
   processarFalha(err: any) {

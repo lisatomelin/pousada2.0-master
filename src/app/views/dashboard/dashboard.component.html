@@ -2,10 +2,8 @@
   <div class="container">
     <div class="card">
       <div class="row align-items-md-start gy-5 p-5">
-        <div
-          class="col-12 col-md-7 d-flex flex-column justify-content-between"
-          style="padding-left: 20px; padding-top: 20px"
-        >
+        <div class="col-12 col-md-7 d-flex flex-column justify-content-between"
+             style="padding-left: 20px; padding-top: 20px">
           <div>
             <h1 class="card-title fw-bold text-primary">
               Controle de Reservas
@@ -21,23 +19,25 @@
             </div>
           </div>
           <div class="button-container">
-            <button mat-raised-button color="primary">Hóspedes</button>
-            <a class="btn btn-primary" routerLink="/hospedes/listar"> </a>
-
-            <button mat-raised-button color="primary">Reservas</button>
-            <a class="btn btn-primary" routerLink="/reservas/listar"> </a>
-
-            <button mat-raised-button color="primary">Quartos</button>
-            <a class="btn btn-primary" routerLink="/quartos/listar"> </a>
+            <button mat-raised-button
+                    color="primary"
+                    (click)="toGuests()">Hóspedes
+            </button>
+            <button mat-raised-button
+                    color="primary"
+                    (click)="toReservations()">Reservas
+            </button>
+            <button mat-raised-button
+                    color="primary"
+                    (click)="toRooms()">Quartos
+            </button>
           </div>
         </div>
         <div class="col-12 col-md-5 order-md-1 mb-4 mb-md-0">
-          <img
-            src="/assets/recepcao.png"
-            class="img-fluid rounded"
-            alt="recepcao"
-            style="height: 50%; width: 40%; position:left;"
-          />
+          <img src="/assets/recepcao.png"
+               class="img-fluid rounded"
+               alt="recepcao"
+               style="height: 50%; width: 40%; position:left;" />
         </div>
       </div>
     </div>
