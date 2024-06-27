@@ -7,14 +7,8 @@
     <form [formGroup]="form"
           (ngSubmit)="gravar()"
           class="d-grid mt-4">
-      <!-- <mat-form-field appearance="outline">
-        <mat-label>Data Entrada:</mat-label>
-        <input formControlName="checkIn"
-               type="date"
-               matInput
-               placeholder="dd/mm/aaaa" />
-      </mat-form-field> -->
-      <mat-form-field appearance="outline">
+    
+      <mat-form-field appearance="outline" >
         <mat-label>Data Entrada:</mat-label>
         <input matInput
                [matDatepicker]="checkInPicker"
@@ -24,15 +18,8 @@
                                [for]="checkInPicker"></mat-datepicker-toggle>
         <mat-datepicker #checkInPicker></mat-datepicker>
       </mat-form-field>
-      <!-- <mat-form-field appearance="outline"
-                      style="padding-left: 10px;">
-        <mat-label>Data Saída</mat-label>
-        <input formControlName="checkOut"
-               type="date"
-               matInput
-               placeholder="dd/mm/aaaa" />
-      </mat-form-field> -->
-      <mat-form-field appearance="outline">
+
+      <mat-form-field appearance="outline" style="padding-left: 10px;">
         <mat-label>Data Saída:</mat-label>
         <input matInput
                [matDatepicker]="checkOutPicker"
@@ -81,7 +68,7 @@
         </mat-select>
       </mat-form-field>
 
-      <div class="d-flex justify-content-end gap-2 mt-5">
+      <div class="d-flex justify-content-end gap-2 mt-5" style="padding-top: 20px;">
         <button type="submit"
                 class="py-3 px-5"
                 color="primary"

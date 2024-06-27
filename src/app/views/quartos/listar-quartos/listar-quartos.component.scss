@@ -26,12 +26,10 @@ th {
   font-weight: bold;
 }
 
-tr:nth-child(even) {
-  background-color: #878d8b;
-}
+
 
 tr:hover:nth-child(1n + 2) {
-  background-color: #a26fcc;
+  background-color: #a494df;
   color: #0c0a0a;
 }
 
