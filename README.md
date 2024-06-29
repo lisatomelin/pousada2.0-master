@@ -1,7 +1,7 @@
 # Pousada20
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
 This project require NodeJs 16+ and Angular Cli 15.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
 
 ## Development server
 
