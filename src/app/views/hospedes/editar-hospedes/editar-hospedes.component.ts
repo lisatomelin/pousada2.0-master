@@ -20,6 +20,7 @@ export class EditarHospedesComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
+      id: new FormControl(''),
       name: new FormControl('', [Validators.required]),
       cpf: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),

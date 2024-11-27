@@ -28,6 +28,7 @@ export class EditarQuartosComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
+      id: new FormControl(''),
       number: new FormControl('', [Validators.required]),
       floor: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
