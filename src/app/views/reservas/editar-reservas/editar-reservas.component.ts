@@ -18,6 +18,7 @@ import { ReservasService } from '../services/reservas.service';
 declare type FormValue<T> = T | null;
 
 interface Form {
+  id: FormControl<FormValue<string>>;
   checkIn: FormControl<FormValue<Date>>;
   checkOut: FormControl<FormValue<Date>>;
   numberOfAdults: FormControl<FormValue<number>>;
@@ -49,6 +50,7 @@ export class EditarReservasComponent {
 
   ngOnInit(): void {
     this.form = this.fb.group<Form>({
+      id: new FormControl(null),
       checkIn: new FormControl(null, [Validators.required]),
       checkOut: new FormControl(null, [Validators.required]),
       numberOfAdults: new FormControl(null, [Validators.required]),
