@@ -36,7 +36,7 @@ export class ExcluirHospedesComponent implements OnInit {
 
   processarSucesso() {
     this.notification.sucesso(
-      "O Hospede foi excluído com sucesso!"
+      "O Hóspede foi excluído com sucesso!"
     )
 
     this.router.navigate(['/hospedes', 'listar']);
