@@ -1,3 +1,9 @@
 .btn-spacing {
   margin-left: 10px; /* ajuste o valor conforme necessário */
 }
+
+:host::ng-deep {
+  .mat-mdc-form-field-error-wrapper {
+    padding-left: 0;
+  }
+}

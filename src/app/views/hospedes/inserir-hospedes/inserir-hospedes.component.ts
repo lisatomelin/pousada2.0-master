@@ -1,6 +1,7 @@
 import { HospedesService } from './../services/hospedes.service';
 import { Component, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -31,11 +32,56 @@ export class InserirHospedesComponent implements OnInit {
     });
   }
 
+  nameHasError() {
+    return this.getControl('name').touched 
+    && this.getControl('name').invalid
+  }
+
+  getNameError() {
+    if (!this.nameHasError()) return "";
+    return "Obrigatório"
+  }
+
+  cpfHasError() {
+    return this.getControl('cpf').touched 
+    && this.getControl('cpf').invalid
+  }
+
+  getCpfError() {
+    if (!this.cpfHasError()) return "";
+    return "Obrigatório"
+  }
+
+  emailHasError() {
+    return this.getControl('email').touched 
+    && this.getControl('email').invalid
+  }
+
+  getEmailError() {
+    if (!this.emailHasError()) return "";
+    return "Obrigatório"
+  }
+
+  phoneNumberHasError() {
+    return this.getControl('phoneNumber').touched 
+    && this.getControl('phoneNumber').invalid
+  }
+
+  getPhoneNumberError() {
+    if (!this.phoneNumberHasError()) return "";
+    return "Obrigatório"
+  }
+
   campoEstaInvalido(name: string) {
     return this.form?.get(name)!.touched && this.form?.get(name)!.invalid;
   }
 
   gravar(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return
+    }
+
     this.hospedesService.criar(this.form?.value).subscribe({
       next: (res) => this.processarSucesso(res),
       error: (err) => this.processarFalha(err),
@@ -48,6 +94,10 @@ export class InserirHospedesComponent implements OnInit {
 
   processarFalha(err: any) {
     this.notification.erro(err.error.erros[0]);
+  }
+
+  private getControl(controlId: string): AbstractControl<string> {
+    return this.form.controls[controlId];
   }
 }
 

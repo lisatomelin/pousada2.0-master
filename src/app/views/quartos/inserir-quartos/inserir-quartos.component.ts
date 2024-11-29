@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { QuartosService } from '../services/quartos.service';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/core/notification/services/notification.service';
@@ -28,11 +28,55 @@ export class InserirQuartosComponent implements OnInit{
     });
   }
 
+  numberHasError() {
+    return this.getControl('number').touched 
+    && this.getControl('number').invalid
+  }
+
+  getNumberError() {
+    if (!this.numberHasError()) return "";
+    return "Obrigatório"
+  }
+
+  floorHasError() {
+    return this.getControl('floor').touched 
+    && this.getControl('floor').invalid
+  }
+
+  getFloorError() {
+    if (!this.floorHasError()) return "";
+    return "Obrigatório"
+  }
+
+  descriptionHasError() {
+    return this.getControl('description').touched 
+    && this.getControl('description').invalid
+  }
+
+  getDescriptionError() {
+    if (!this.descriptionHasError()) return "";
+    return "Obrigatório"
+  }
+
+  capacityHasError() {
+    return this.getControl('capacity').touched 
+    && this.getControl('capacity').invalid
+  }
+
+  getCapacityError() {
+    if (!this.capacityHasError()) return "";
+    return "Obrigatório"
+  }
+
   campoEstaInvalido(number: string) {
     return this.form?.get(number)!.touched && this.form?.get(number)!.invalid;
   }
 
   gravar(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return
+    }
     this.quartosService.criar(this.form?.value).subscribe({
       next: (res) => this.processarSucesso(res),
       error: (err) => this.processarFalha(err),
@@ -47,4 +91,7 @@ export class InserirQuartosComponent implements OnInit{
     this.notification.erro(err.error.erros[0]);
   }
 
+  private getControl(controlId: string): AbstractControl<string> {
+    return this.form.controls[controlId];
+  }
 }

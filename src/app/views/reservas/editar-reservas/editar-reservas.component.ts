@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -75,6 +76,66 @@ export class EditarReservasComponent {
 
   }
 
+  checkInHasError() {
+    return this.getControl('checkIn').touched 
+    && this.getControl('checkIn').invalid
+  }
+
+  getcheckInError() {
+    if (!this.checkInHasError()) return "";
+    return "Obrigatório"
+  }
+
+  checkOutHasError() {
+    return this.getControl('checkOut').touched 
+    && this.getControl('checkOut').invalid
+  }
+
+  getcheckOutError() {
+    if (!this.checkOutHasError()) return "";
+    return "Obrigatório"
+  }
+
+  numberOfAdultsHasError() {
+    return this.getControl('numberOfAdults').touched 
+    && this.getControl('numberOfAdults').invalid
+  }
+
+  getnumberOfAdultsError() {
+    if (!this.numberOfAdultsHasError()) return "";
+    return "Obrigatório"
+  }
+
+  numberOfChildrenHasError() {
+    return this.getControl('numberOfChildren').touched 
+    && this.getControl('numberOfChildren').invalid
+  }
+
+  getnumberOfChildrenError() {
+    if (!this.numberOfChildrenHasError()) return "";
+    return "Obrigatório"
+  }
+
+  guestIdHasError() {
+    return this.getControl('guestId').touched 
+    && this.getControl('guestId').invalid
+  }
+
+  getguestIdError() {
+    if (!this.guestIdHasError()) return "";
+    return "Obrigatório"
+  }
+
+  roomIdHasError() {
+    return this.getControl('roomId').touched 
+    && this.getControl('roomId').invalid
+  }
+
+  getroomIdError() {
+    if (!this.roomIdHasError()) return "";
+    return "Obrigatório"
+  }
+
   gravar(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
@@ -113,4 +174,7 @@ export class EditarReservasComponent {
     return true;
   }
 
+  private getControl(controlId: string): AbstractControl<any> {
+    return (this.form.controls as any)[controlId];
+  }
 }

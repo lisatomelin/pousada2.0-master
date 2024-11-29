@@ -3,26 +3,29 @@
     <h1 class="fs-2">Editar Hóspede</h1>
 
     <form [formGroup]="form!" (ngSubmit)="gravar()" class="d-grid mt-4">
-      <mat-form-field appearance="outline">
+      <mat-form-field [style.min-width.px]="250" [style.width.%]="40" [style.display]="'block'" appearance="outline">
         <mat-label>NOME:</mat-label>
         <input type="text" formControlName="name" matInput />
+        <mat-error *ngIf="nameHasError()" >{{getNameError()}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" style="padding-left: 10px;">
+      <mat-form-field [style.min-width.px]="250" [style.width.%]="40" [style.display]="'block'" appearance="outline">
         <mat-label>CPF:</mat-label>
         <input type="text" formControlName="cpf" matInput />
+        <mat-error *ngIf="cpfHasError()" >{{getCpfError()}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" style="padding-left: 10px;">
+      <mat-form-field [style.min-width.px]="250" [style.width.%]="40" [style.display]="'block'" appearance="outline">
         <mat-label>EMAIL:</mat-label>
         <input type="text" formControlName="email" matInput />
+        <mat-error *ngIf="emailHasError()" >{{getEmailError()}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" style="padding-left: 10px;">
+      <mat-form-field [style.min-width.px]="250" [style.width.%]="40" [style.display]="'block'" appearance="outline">
         <mat-label>TELEFONE:</mat-label>
         <input type="text" formControlName="phoneNumber" matInput />
+        <mat-error *ngIf="phoneNumberHasError()" >{{getPhoneNumberError()}}</mat-error>
       </mat-form-field>
-
 
       <div class="d-flex justify-content-end gap-2 mt-5">
         <button

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/core/notification/services/notification.service';
 import { GuestViewModel } from '../models/guest-View.Model';
@@ -38,7 +38,51 @@ export class EditarHospedesComponent implements OnInit {
     return this.form?.get(name)!.touched && this.form?.get(name)!.invalid;
   }
 
+  nameHasError() {
+    return this.getControl('name').touched 
+    && this.getControl('name').invalid
+  }
+
+  getNameError() {
+    if (!this.nameHasError()) return "";
+    return "Obrigatório"
+  }
+
+  cpfHasError() {
+    return this.getControl('cpf').touched 
+    && this.getControl('cpf').invalid
+  }
+
+  getCpfError() {
+    if (!this.cpfHasError()) return "";
+    return "Obrigatório"
+  }
+
+  emailHasError() {
+    return this.getControl('email').touched 
+    && this.getControl('email').invalid
+  }
+
+  getEmailError() {
+    if (!this.emailHasError()) return "";
+    return "Obrigatório"
+  }
+
+  phoneNumberHasError() {
+    return this.getControl('phoneNumber').touched 
+    && this.getControl('phoneNumber').invalid
+  }
+
+  getPhoneNumberError() {
+    if (!this.phoneNumberHasError()) return "";
+    return "Obrigatório"
+  }
+
   gravar(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return
+    }
     const id = this.route.snapshot.paramMap.get('id')!;
     this.hospedesService.editar(id, this.form?.value).subscribe({
       next: (res) => this.processarSucesso(res),
@@ -54,4 +98,7 @@ export class EditarHospedesComponent implements OnInit {
     this.notification.erro(err.error.erros[0]);
   }
 
+  private getControl(controlId: string): AbstractControl<string> {
+    return this.form.controls[controlId];
+  }
 }
