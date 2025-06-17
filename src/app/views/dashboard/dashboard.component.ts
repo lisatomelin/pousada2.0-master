@@ -14,6 +14,10 @@ export class DashboardComponent {
     this.navigate('/hospedes', 'listar');
   }
 
+  protected toFinanceiro() {
+    this.navigate('/financeiro', 'listar');
+  }
+
   protected toRooms() {
     this.navigate('/quartos', 'listar');
   }

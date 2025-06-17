@@ -1,0 +1,57 @@
+<div class="row justify-content-center mt-5" style="padding-left: 20px; padding-top: 20px">
+  <div class="col-md-8 d-grid gap-3">
+    <h1 class="fs-2 row justify-content-center">
+      Financeiro
+    </h1>
+
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>DATA ENTRADA</th>
+            <th>DATA SAÍDA</th>
+            <th>HÓSPEDE</th>
+            <th>QUARTO</th>
+            <th>VALORES RESERVA</th>
+            <th>VALORES ADICIONAIS</th>
+            <th>TOTAL</th>
+            <th>MÉTODO DE PAGAMENTO</th>
+            <th>STATUS</th>
+            <th>AÇÕES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let financeiro of financeiro$ | async">
+            <td>{{ financeiro.checkIn }}</td>
+            <td>{{ financeiro.checkOut }}</td>
+            <td>{{ financeiro.guestName }}</td>
+            <td>{{ financeiro.roomName }}</td>
+            <td>{{ financeiro.reservationValue }}</td>
+            <td>{{ financeiro.additionalValue }}</td>
+            <td>{{ financeiro.reservationValue + financeiro.additionalValue }}</td>
+            <td>{{ financeiro.payment }}</td>
+            <td>{{ financeiro.status }}</td>
+            <td>
+              <div class="d-flex align-items-center justify-content-center">
+                <button mat-stroked-button
+                        class="m-2"
+                        color="accent"
+                        [disabled]="financeiro.status == 'Finalizado'"
+                        (click)="toEdit(financeiro)">
+                  Editar
+                </button>
+                <button mat-stroked-button
+                        class="m-2"
+                        color="warn"
+                        [disabled]="financeiro.status == 'Finalizado'"
+                        (click)="checkoutReserva(financeiro)">
+                  Checkout
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
