@@ -5,18 +5,16 @@ import { uuidv4 } from 'src/app/core/utils/uuidv4';
 import { environment } from 'src/environments/environment';
 import { ReservationViewModel } from '../../reservas/models/reservation-View.Model';
 
-const RESERVATIONS_KEY = 'reservations';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class ReservasService {
+export class RelatoriosService {
 
-  private API_URL = `${environment.API_URL}/reservations`;
+  private API_URL = `${environment.API_URL}/reports/`;
 
   constructor(private http: HttpClient) {}
-
-
 
   selecionarPorId(id: string): Observable<ReservationViewModel | undefined> {
     const url = `${this.API_URL}/${id}`;

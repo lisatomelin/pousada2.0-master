@@ -36,6 +36,13 @@ const routes: Routes = [
         (m) => m.ReservasModule
       ),
   },
+  {
+    path: 'relatorios',
+    loadChildren: () =>
+      import('./views/relatorios/relatorios.module').then(
+        (m) => m.RelatoriosModule
+      ),
+  }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

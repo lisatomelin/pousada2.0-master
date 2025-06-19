@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Observable, forkJoin } from 'rxjs';
+import { forkJoin, Observable,  } from 'rxjs';
 
 import { NotificationService } from 'src/app/core/notification/services/notification.service';
 import { GuestViewModel } from 'src/app/views/hospedes/models/guest-View.Model';
@@ -9,14 +9,19 @@ import { RoomsViewModel } from 'src/app/views/quartos/models/rooms-View.Model';
 import { QuartosService } from 'src/app/views/quartos/services/quartos.service';
 import { ReservationViewModel } from 'src/app/views/reservas/models/reservation-View.Model';
 import { ReservasService } from 'src/app/views/reservas/services/reservas.service';
+import { RelatoriosService } from '../../services/relatorios.service';
+import { RelatoriosViewModel } from '../../models/relatorios-View.Model';
+
 
 @Component({
-  selector: 'app-listar-reservas',
+  selector: 'app-listar-relatorio-reservas',
   templateUrl: './listar-relatorio-reservas.component.html',
   styleUrls: ['./listar-relatorio-reservas.component.scss']
 })
 export class ListarRelatorioReservasComponent implements OnInit {
 
+
+  protected reports: RelatoriosViewModel[] = [];
   protected reservations: ReservationViewModel[] = [];
 
   private rooms: RoomsViewModel[] = [];
@@ -24,6 +29,7 @@ export class ListarRelatorioReservasComponent implements OnInit {
 
   constructor(
     private notification: NotificationService,
+    private relatoriosService: RelatoriosService,
     private reservasService: ReservasService,
     private hospedeService: HospedesService,
     private quartoService: QuartosService
@@ -31,13 +37,15 @@ export class ListarRelatorioReservasComponent implements OnInit {
 
   ngOnInit(): void {
     forkJoin([
+      this.relatoriosService.selecionarTodos(),
       this.reservasService.selecionarTodos(),
       this.hospedeService.selecionarTodos(),
       this.quartoService.selecionarTodos(),
     ])
     .subscribe({
-      next: ([reservations, guests, rooms]) => {
+      next: ([reservations, reports, guests, rooms]) => {
         this.reservations = reservations;
+        this.reports = reports;
         this.guests = guests;
         this.rooms = rooms;
       },

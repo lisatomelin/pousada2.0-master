@@ -26,6 +26,10 @@ export class DashboardComponent {
     this.navigate('/reservas', 'listar');
   }
 
+  protected toReports() {
+    this.navigate('/relatorios', 'listar');
+  }
+
   protected navigate(path: string, subPath: string) {
     this.router.navigate([path, subPath]);
   }
