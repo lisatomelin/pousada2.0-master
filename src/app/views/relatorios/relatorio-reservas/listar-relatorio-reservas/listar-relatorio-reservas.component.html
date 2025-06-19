@@ -1,0 +1,43 @@
+<div class="row justify-content-center mt-5"
+     style="padding-left: 20px; padding-top: 20px">
+  <div class="col-md-8 d-grid gap-3">
+    <h1 class="fs-2 row justify-content-center">
+      Lista de Reservas Cadastradas
+    </h1>
+    <div style="padding-top: 20px;">
+      <table>
+        <thead>
+          <tr>
+            <th>DATA ENTRADA</th>
+            <th>DATA SAÍDA</th>
+            <th>NÚMERO DE CRIANÇAS</th>
+            <th>NÚMERO DE ADULTOS</th>
+            <th>QUARTO</th>
+            <th>HOSPEDE</th>
+            <th>AÇÕES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reserva of reservations">
+            <td>{{ formatarData(reserva.checkIn) }}</td>
+            <td>{{ formatarData(reserva.checkOut) }}</td>
+            <td>{{ reserva.numberOfChildren }}</td>
+            <td>{{ reserva.numberOfAdults }}</td>
+            <td>{{ buscaDescricaoQuarto(reserva.roomId) }}</td>
+            <td>{{ buscaNomeHospede(reserva.guestId) }}</td>
+            <td>
+              <div class="d-flex align-items-center justify-content-center">
+                <button mat-stroked-button
+                        class="m-2"
+                        color="accent">
+                  Gerar Relatório
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
