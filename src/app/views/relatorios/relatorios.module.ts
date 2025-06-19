@@ -7,7 +7,7 @@ import { RelatoriosRoutingModule } from './relatorios-routing.module';
 
 import { ReservasRoutingModule } from '../reservas/reservas-routing.module';
 import { RelatoriosService } from './services/relatorios.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatOptionModule } from '@angular/material/core';
@@ -39,7 +39,9 @@ import { NotificationModule } from 'src/app/core/notification/notification.modul
     MatListModule,
     MatSelectModule,
     NotificationModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    FormsModule,
+    
   ],
   declarations: [
     ListarRelatorioReservasComponent

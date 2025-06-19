@@ -11,7 +11,10 @@ import { ReservationViewModel } from 'src/app/views/reservas/models/reservation-
 import { ReservasService } from 'src/app/views/reservas/services/reservas.service';
 import { RelatoriosService } from '../../services/relatorios.service';
 import { RelatoriosViewModel } from '../../models/relatorios-View.Model';
-
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-listar-relatorio-reservas',
@@ -26,6 +29,10 @@ export class ListarRelatorioReservasComponent implements OnInit {
 
   private rooms: RoomsViewModel[] = [];
   private guests: GuestViewModel[] = [];
+
+  public dataInicial: Date | null = null;
+  public dataFinal: Date | null = null;
+  public reservasFiltradas: ReservationViewModel[] = [];
 
   constructor(
     private notification: NotificationService,
@@ -45,6 +52,7 @@ export class ListarRelatorioReservasComponent implements OnInit {
     .subscribe({
       next: ([reservations, reports, guests, rooms]) => {
         this.reservations = reservations;
+        this.reservasFiltradas = reservations;
         this.reports = reports;
         this.guests = guests;
         this.rooms = rooms;
@@ -52,6 +60,55 @@ export class ListarRelatorioReservasComponent implements OnInit {
       error: (error) => this.processarFalha(error)
     });
   }
+
+   public filtrarPorPeriodo(): void {
+    if (this.dataInicial && this.dataFinal) {
+      const inicio = new Date(this.dataInicial).setHours(0,0,0,0);
+      const fim = new Date(this.dataFinal).setHours(23,59,59,999);
+      this.reservasFiltradas = this.reservations.filter(reserva => {
+        const checkIn = new Date(reserva.checkIn).getTime();
+        return checkIn >= inicio && checkIn <= fim;
+      });
+    } else {
+      this.reservasFiltradas = this.reservations;
+    }
+  }
+
+  public gerarPDF(): void {
+  const doc = new jsPDF();
+  autoTable(doc, {
+    head: [['DATA ENTRADA', 'DATA SAÍDA', 'Nº CRIANÇAS', 'Nº ADULTOS', 'QUARTO', 'HÓSPEDE']],
+    body: this.reservasFiltradas.map(reserva => [
+      this.formatarData(reserva.checkIn),
+      this.formatarData(reserva.checkOut),
+      reserva.numberOfChildren,
+      reserva.numberOfAdults,
+      this.buscaDescricaoQuarto(reserva.roomId),
+      this.buscaNomeHospede(reserva.guestId)
+    ])
+  });
+  doc.save('relatorio-reservas.pdf');
+}
+
+  public gerarExcel(): void {
+    const worksheet = XLSX.utils.json_to_sheet(
+      this.reservasFiltradas.map(reserva => ({
+        'DATA ENTRADA': this.formatarData(reserva.checkIn),
+        'DATA SAÍDA': this.formatarData(reserva.checkOut),
+        'Nº CRIANÇAS': reserva.numberOfChildren,
+        'Nº ADULTOS': reserva.numberOfAdults,
+        'QUARTO': this.buscaDescricaoQuarto(reserva.roomId),
+        'HÓSPEDE': this.buscaNomeHospede(reserva.guestId)
+      }))
+    );
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Relatórios');
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const blob = new Blob([excelBuffer], { type: 'application/octet-stream' });
+    saveAs(blob, 'relatorio-reservas.xlsx');
+  }
+
+
 
   protected formatarData(date: Date): string {
     let dataReal: string = date as unknown as string;
@@ -88,6 +145,8 @@ export class ListarRelatorioReservasComponent implements OnInit {
     }
     return descricao;
   }
+
+
 
   private processarFalha(err: any) {
     this.notification.erro(err.error.erros[0]);

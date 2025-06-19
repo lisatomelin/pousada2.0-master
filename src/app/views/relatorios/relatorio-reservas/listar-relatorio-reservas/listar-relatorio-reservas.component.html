@@ -1,10 +1,56 @@
-<div class="row justify-content-center mt-5"
-     style="padding-left: 20px; padding-top: 20px">
+<!-- Adicione acima da tabela -->
+<div
+  class="row justify-content-center mt-5"
+  style="padding-left: 20px; padding-top: 20px"
+>
+  <form class="row g-3 mb-3" (ngSubmit)="filtrarPorPeriodo()">
+    <div class="col-auto">
+      <mat-form-field appearance="outline">
+        <mat-label>Data Inicial</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker1"
+          [(ngModel)]="dataInicial"
+          name="dataInicial"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker1"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-auto">
+      <mat-form-field appearance="outline">
+        <mat-label>Data Final</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker2"
+          [(ngModel)]="dataFinal"
+          name="dataFinal"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker2"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-auto d-flex align-items-end">
+      <button mat-raised-button color="primary" type="submit">Filtrar</button>
+    </div>
+  </form>
+</div>
+
+<div
+  class="row justify-content-center mt-5"
+  style="padding-left: 20px; padding-top: 20px"
+>
   <div class="col-md-8 d-grid gap-3">
     <h1 class="fs-2 row justify-content-center">
       Lista de Relatórios de Reservas
     </h1>
-    <div style="padding-top: 20px;">
+    <div style="padding-top: 20px">
       <table>
         <thead>
           <tr>
@@ -14,26 +60,16 @@
             <th>NÚMERO DE ADULTOS</th>
             <th>QUARTO</th>
             <th>HOSPEDE</th>
-            <th>AÇÕES</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let reserva of reservations">
+          <tr *ngFor="let reserva of reservasFiltradas">
             <td>{{ formatarData(reserva.checkIn) }}</td>
             <td>{{ formatarData(reserva.checkOut) }}</td>
             <td>{{ reserva.numberOfChildren }}</td>
             <td>{{ reserva.numberOfAdults }}</td>
             <td>{{ buscaDescricaoQuarto(reserva.roomId) }}</td>
             <td>{{ buscaNomeHospede(reserva.guestId) }}</td>
-            <td>
-              <div class="d-flex align-items-center justify-content-center">
-                <button mat-stroked-button
-                        class="m-2"
-                        color="accent">
-                  Gerar Relatório
-                </button>
-              </div>
-            </td>
           </tr>
         </tbody>
       </table>
@@ -41,3 +77,27 @@
   </div>
 </div>
 
+<div
+  class="row justify-content-center mt-5"
+  style="padding-left: 70px; padding-top: 20px"
+>
+  <button space-between="10px"
+    mat-stroked-button
+    class="m-2"
+    color="accent"
+    (click)="gerarPDF()"
+    type="button"
+  >
+    Baixar PDF
+  </button>
+
+  <button
+    mat-stroked-button
+    class="m-2"
+    color="primary"
+    (click)="gerarExcel()"
+    type="button"
+  >
+    Baixar Excel
+  </button>
+</div>
